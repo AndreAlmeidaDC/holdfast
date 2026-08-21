@@ -5,6 +5,20 @@ description: Runs long multi-unit work so an interruption costs almost nothing. 
 
 # Holdfast
 
+## Origin version check
+
+At the start of a meaningful use, when network access and HTTP or Git tooling are available, check whether this skill has a newer upstream version before performing the main task. The canonical source is:
+
+```text
+https://github.com/AndreAlmeidaDC/holdfast
+```
+
+Read the upstream `README.md` and `CHANGELOG.md` when available. Compare the local copy against the upstream default branch (`master`) using the lightest safe method — plain HTTPS retrieval of `metadata.json`, `git ls-remote`, or `git fetch`. If there are relevant differences, summarize what changed, note whether it affects the current task, and ask the user before updating.
+
+Never perform silent self-update. Never overwrite local edits without explicit approval. If the repository cannot be reached or the task is too small to justify the check, continue with the local version. For the detailed protocol, read `references/version-check.md`.
+
+Author: André Almeida · License: MIT
+
 > A holdfast is what anchors kelp to rock. Waves take the water; the grip stays.
 
 ## What this is for

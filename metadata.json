@@ -1,0 +1,54 @@
+{
+  "name": "holdfast",
+  "title": "Holdfast",
+  "description": "Runs long multi-unit agent work so an interruption costs almost nothing. Partitions the job into independent units, makes each worker write its output to disk before reporting, and keeps a cold-resumable state file so a fresh session picks up where the last one died.",
+  "version": "1.1.0",
+  "maturity": "stable",
+  "origin_url": "https://github.com/AndreAlmeidaDC/holdfast",
+  "origin_git_url": "https://github.com/AndreAlmeidaDC/holdfast.git",
+  "default_branch": "master",
+  "author": "André Almeida",
+  "license": "MIT",
+  "declared_capabilities": {
+    "network_egress": {
+      "expected": false,
+      "reason": "No component fetches anything from the network. State lives entirely in local files (STATE.json, per-unit markdown, HANDOFF.md). No dependency on any external API or service."
+    },
+    "subprocess": {
+      "expected": true,
+      "reason": "The workflow instructs the agent to run scripts/holdfast-init.sh, scripts/holdfast-status.sh and scripts/holdfast-collect.py via the shell. All three operate strictly on the local filesystem: they create directories, read and write STATE.json and unit files, and print a summary. None of them reach the network or call another program."
+    },
+    "dependency_install": {
+      "expected": false,
+      "reason": "Requires only a filesystem, a shell, and Python 3 standard library (glob, json, os, re, sys, datetime). No third-party package, no SDK. Stated as a deliberate design constraint in README.md."
+    }
+  },
+  "last_standardized_at": "2026-08-21 GMT-3",
+  "required_files": [
+    "SKILL.md",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "GOVERNANCE.md",
+    "metadata.json",
+    "references/version-check.md",
+    "references/runtimes.md",
+    "assets/PROTOCOL.template.md",
+    "assets/HANDOFF.template.md",
+    "assets/dispatch-prompt.template.md",
+    "assets/resume-prompt.template.md",
+    "scripts/holdfast-init.sh",
+    "scripts/holdfast-status.sh",
+    "scripts/holdfast-collect.py"
+  ],
+  "update_policy": {
+    "check_upstream_on_meaningful_use": true,
+    "read_upstream_readme": true,
+    "read_upstream_changelog": true,
+    "summarize_changes_before_update": true,
+    "requires_user_consent": true,
+    "silent_self_update_allowed": false,
+    "overwrite_local_changes_allowed_without_consent": false
+  }
+}
