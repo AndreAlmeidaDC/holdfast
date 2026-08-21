@@ -26,11 +26,13 @@ The alternative names all missed something. *Checkpoint* is generic and describe
 
 ### Install
 
+The command below targets **Claude Code**'s skills directory specifically:
+
 ```bash
 git clone https://github.com/AndreAlmeidaDC/holdfast.git ~/.claude/skills/holdfast
 ```
 
-Or copy the directory into wherever your runtime loads skills from.
+For any other runtime, copy the directory into wherever it loads skills from instead — the path above is Claude Code's convention, not a requirement of the skill itself. See "Runtime support" below for what, if anything, needs adapting per runtime.
 
 **Dependencies:** a filesystem, a shell, Python 3 (standard library only), and some way to run work in parallel. No packages, no SDK, no network.
 
@@ -209,11 +211,13 @@ Os nomes alternativos deixavam algo escapar. *Checkpoint* é genérico e descrev
 
 ### Instalação
 
+O comando abaixo aponta especificamente para o diretório de skills do **Claude Code**:
+
 ```bash
 git clone https://github.com/AndreAlmeidaDC/holdfast.git ~/.claude/skills/holdfast
 ```
 
-Ou copie o diretório para onde quer que o seu runtime carregue skills.
+Para qualquer outro runtime, copie o diretório para onde quer que ele carregue skills — o caminho acima é a convenção do Claude Code, não uma exigência da skill em si. Veja "Suporte por runtime" abaixo para o que, se algo, precisa de adaptação por runtime.
 
 **Dependências:** um sistema de arquivos, um shell, Python 3 (só biblioteca padrão), e alguma forma de rodar trabalho em paralelo. Sem pacote, sem SDK, sem rede.
 
